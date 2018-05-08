@@ -10,11 +10,22 @@ class Layout extends Component {
   }
   render () {
     return ( <div>
+        <Header />
         <img src="img/bape.png" />
       </div>
 
     )
   }
+}
+
+var Header = function() {
+  return (<header>
+      <ul>
+      <li>Home</li>
+      <li>About</li>
+      <li>Contact</li>
+      </ul>
+    </header>)
 }
 
 const app = document.getElementById('app')
