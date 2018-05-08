@@ -33,7 +33,10 @@ var Layout = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Layout.__proto__ || Object.getPrototypeOf(Layout)).call(this));
 
     _this.state = {
-      name: 'Enoch'
+      name: 'Enoch',
+      health: 20,
+      level: 1,
+      lowHealthClass: "danger-red"
     };
     return _this;
   }
@@ -43,9 +46,30 @@ var Layout = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
-        _react2.default.createElement(Header, null),
-        _react2.default.createElement('img', { src: 'img/bape.png' })
+        { id: 'parent' },
+        _react2.default.createElement(
+          'div',
+          { className: 'green-bg ' + (this.state.health < 50 ? this.state.lowHealthClass : "") },
+          _react2.default.createElement(
+            'h3',
+            null,
+            'Name: ',
+            this.state.name
+          ),
+          _react2.default.createElement(
+            'h3',
+            null,
+            'Health: ',
+            this.state.health
+          ),
+          _react2.default.createElement(
+            'h3',
+            null,
+            'Level: ',
+            this.state.level
+          ),
+          _react2.default.createElement('img', { src: 'img/bape.png', alt: "woman with bape on" })
+        )
       );
     }
   }]);
