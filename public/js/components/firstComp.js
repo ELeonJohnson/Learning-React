@@ -33,15 +33,26 @@ var Layout = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Layout.__proto__ || Object.getPrototypeOf(Layout)).call(this));
 
     _this.state = {
-      name: 'Enoch',
-      health: 20,
+      name: 'Chloe',
+      health: 100,
       level: 1,
       lowHealthClass: "danger-red"
     };
+
+    _this.clickedGirl = _this.clickedGirl.bind(_this);
     return _this;
   }
 
   _createClass(Layout, [{
+    key: 'clickedGirl',
+    value: function clickedGirl() {
+      this.setState({
+        health: this.state.health - 25
+      }, function () {
+        console.log("Chloe has been clicked. Her health is now: " + this.state.health);
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -68,7 +79,8 @@ var Layout = function (_Component) {
             'Level: ',
             this.state.level
           ),
-          _react2.default.createElement('img', { src: 'img/bape.png', alt: "woman with bape on" })
+          _react2.default.createElement('img', { src: 'img/bape.png', alt: "woman with bape on",
+            onClick: this.clickedGirl })
         )
       );
     }

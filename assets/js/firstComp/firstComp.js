@@ -5,12 +5,25 @@ class Layout extends Component {
   constructor () {
     super()
     this.state = {
-      name: 'Enoch',
-      health: 20,
+      name: 'Chloe',
+      health: 100,
       level: 1,
       lowHealthClass: "danger-red"
     }
+
+    this.clickedGirl = this.clickedGirl.bind(this)
   }
+
+  clickedGirl() {
+    this.setState({
+      health: this.state.health -25
+    }, function() {
+        console.log("Chloe has been clicked. Her health is now: "
+        + this.state.health);
+    })
+
+  }
+
   render () {
     return (<div id={'parent'}>
         <div className={`green-bg ${(this.state.health < 50) ?
@@ -18,7 +31,8 @@ class Layout extends Component {
           <h3>Name: {this.state.name}</h3>
           <h3>Health: {this.state.health}</h3>
           <h3>Level: {this.state.level}</h3>
-          <img src="img/bape.png" alt={"woman with bape on"} />
+          <img src="img/bape.png" alt={"woman with bape on"}
+          onClick={this.clickedGirl}/>
         </div>
       </div>
 
