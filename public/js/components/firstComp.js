@@ -38,7 +38,6 @@ var Layout = function (_Component) {
       level: 1,
       lowHealthClass: "danger-red"
     };
-
     _this.clickedGirl = _this.clickedGirl.bind(_this);
     return _this;
   }
@@ -58,35 +57,66 @@ var Layout = function (_Component) {
       return _react2.default.createElement(
         'div',
         { id: 'parent' },
+        _react2.default.createElement(Header, null),
         _react2.default.createElement(
           'div',
           { className: 'green-bg ' + (this.state.health < 50 ? this.state.lowHealthClass : "") },
           _react2.default.createElement(
-            'h3',
-            null,
-            'Name: ',
-            this.state.name
+            'div',
+            { className: 'user-info' },
+            _react2.default.createElement(
+              'h3',
+              null,
+              'Name: ',
+              this.state.name
+            ),
+            _react2.default.createElement(
+              'h3',
+              null,
+              'Health: ',
+              this.state.health
+            ),
+            _react2.default.createElement(
+              'h3',
+              null,
+              'Level: ',
+              this.state.level
+            )
           ),
-          _react2.default.createElement(
-            'h3',
-            null,
-            'Health: ',
-            this.state.health
-          ),
-          _react2.default.createElement(
-            'h3',
-            null,
-            'Level: ',
-            this.state.level
-          ),
-          _react2.default.createElement('img', { src: 'img/bape.png', alt: "woman with bape on",
-            onClick: this.clickedGirl })
+          _react2.default.createElement(ModelImage, null)
         )
       );
     }
   }]);
 
   return Layout;
+}(_react.Component);
+
+var ModelImage = function (_Component2) {
+  _inherits(ModelImage, _Component2);
+
+  function ModelImage() {
+    _classCallCheck(this, ModelImage);
+
+    var _this2 = _possibleConstructorReturn(this, (ModelImage.__proto__ || Object.getPrototypeOf(ModelImage)).call(this));
+
+    _this2.state = {};
+    return _this2;
+  }
+
+  _createClass(ModelImage, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'GirlImageComp' },
+        _react2.default.createElement('img', { src: 'img/bape.png', alt: "woman with bape on",
+          onClick: this.clickedGirl })
+      );
+    }
+  }]);
+
+  return ModelImage;
 }(_react.Component);
 
 var Header = function Header() {
