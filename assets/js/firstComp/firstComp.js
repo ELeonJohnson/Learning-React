@@ -29,10 +29,10 @@ class Layout extends Component {
           this.state.lowHealthClass : "" }`}>
          <div className={'user-info'}>
           <h3>Name: {this.state.name}</h3>
-          <h3>Health: {this.state.health}</h3>
           <h3>Level: {this.state.level}</h3>
          </div>
-         <ModelImage />
+         <ModelImage clickedGirl={this.clickedGirl}
+         health={this.state.health} />
         </div>
       </div>
 
@@ -44,13 +44,15 @@ class ModelImage extends Component {
   constructor () {
     super()
     this.state = {
-
+      gameOver: "You lost too much health!"
     }
 }
 render () {
     return (<div className="GirlImageComp">
     <img src="img/bape.png" alt={"woman with bape on"}
-    onClick={this.clickedGirl}/>
+    onClick={this.props.clickedGirl}/>
+    <h3>Health: {(this.props.health <= 0) ?
+      this.state.gameOver : this.props.health}</h3>
     </div>)
   }
 }

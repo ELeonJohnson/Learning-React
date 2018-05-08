@@ -73,17 +73,12 @@ var Layout = function (_Component) {
             _react2.default.createElement(
               'h3',
               null,
-              'Health: ',
-              this.state.health
-            ),
-            _react2.default.createElement(
-              'h3',
-              null,
               'Level: ',
               this.state.level
             )
           ),
-          _react2.default.createElement(ModelImage, null)
+          _react2.default.createElement(ModelImage, { clickedGirl: this.clickedGirl,
+            health: this.state.health })
         )
       );
     }
@@ -100,7 +95,9 @@ var ModelImage = function (_Component2) {
 
     var _this2 = _possibleConstructorReturn(this, (ModelImage.__proto__ || Object.getPrototypeOf(ModelImage)).call(this));
 
-    _this2.state = {};
+    _this2.state = {
+      gameOver: "You lost too much health!"
+    };
     return _this2;
   }
 
@@ -111,7 +108,13 @@ var ModelImage = function (_Component2) {
         'div',
         { className: 'GirlImageComp' },
         _react2.default.createElement('img', { src: 'img/bape.png', alt: "woman with bape on",
-          onClick: this.clickedGirl })
+          onClick: this.props.clickedGirl }),
+        _react2.default.createElement(
+          'h3',
+          null,
+          'Health: ',
+          this.props.health <= 0 ? this.state.gameOver : this.props.health
+        )
       );
     }
   }]);
